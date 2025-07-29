@@ -507,15 +507,6 @@ app.use(passport.session());
 // ADDED: Gemini setup - MUST BE DECLARED BEFORE `model` USES IT
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-// IMPORTANT: Declare 'model' inside the function where it's used,
-// or at least after 'genAI' is initialized.
-// For the `/query` endpoint, it's best to get the model instance there
-// as some configurations might change or to ensure it's always fresh.
-// I've moved the model declaration back into the /query endpoint,
-// and set it to `gemini-1.5-flash` as a common working option.
-// If you want `gemini-1.5-pro`, make sure your API key has access.
-// REMOVED from global scope: const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
-
 
 // Xenova embedding generator
 let embedder;
